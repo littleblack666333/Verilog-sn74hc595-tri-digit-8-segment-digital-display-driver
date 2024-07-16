@@ -1,3 +1,6 @@
+// driver for SN74HC595 drived tri-digit 8-segment display module
+// the LEDs of the display module are common-anode
+
 module sn74hc595_trio_seg8_driver(
     clk,
     rst_n,
@@ -31,7 +34,7 @@ module sn74hc595_trio_seg8_driver(
     localparam CHAR_3 = 8'b1011_0000;
     localparam CHAR_4 = 8'b1001_1001;
     localparam CHAR_5 = 8'b1001_0010;
-    localparam CHAR_6 = 8'b1000_0000;
+    localparam CHAR_6 = 8'b1000_0010;
     localparam CHAR_7 = 8'b1111_1000;
     localparam CHAR_8 = 8'b1000_0000;
     localparam CHAR_9 = 8'b1001_0000;
@@ -72,7 +75,7 @@ module sn74hc595_trio_seg8_driver(
             default: dec_temp[0] = CHAR_0;
         endcase
         case (num1)
-            4'd1: dec_temp[0] = CHAR_1;
+            4'd1: dec_temp[1] = CHAR_1;
             4'd2: dec_temp[1] = CHAR_2;
             4'd3: dec_temp[1] = CHAR_3;
             4'd4: dec_temp[1] = CHAR_4;
