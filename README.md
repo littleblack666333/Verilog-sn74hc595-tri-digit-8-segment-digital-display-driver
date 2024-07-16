@@ -1,4 +1,4 @@
-# Verilog Driver Code for SN74HC595 Dirived Tri-digit 8-segment Display Module
+# Verilog Driver Code for SN74HC595 Drived Tri-digit 8-segment Display Module
 ## Basic Description
 This is a Verilog driver for a tri-digit 8-segment display module driven by the SN74HC595 chip, designed to display 
 specified digits using an FPGA. The display module consists of three 8-segment displays (seven segments for digits and 
