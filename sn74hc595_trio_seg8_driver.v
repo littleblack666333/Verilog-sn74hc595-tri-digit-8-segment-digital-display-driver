@@ -1,4 +1,4 @@
-// driver for SN74HC595 drived tri-digit 8-segment display module
+// driver for SN74HC595 driven tri-digit 8-segment display module
 // the LEDs of the display module are common-anode
 
 module sn74hc595_trio_seg8_driver(
@@ -25,7 +25,7 @@ module sn74hc595_trio_seg8_driver(
 
     // user-defined parameter
     parameter STEP_LENGTH = 8'd250;  // for 50MHz clk, the freq of clk_serial is 100KHz
-    parameter PIONT_POS = 2'd2;  // position of decimal point, after the number of corresponding index, if 0, discard
+    parameter POINT_POS = 2'd2;  // position of decimal point, after the number of corresponding index, if 0, discard
 
     // character code
     localparam CHAR_0 = 8'b1100_0000;
@@ -52,14 +52,14 @@ module sn74hc595_trio_seg8_driver(
     reg load;
     reg data;
 
-    reg [7:0] dec_temp [2:0];  // temporary varible of dec
+    reg [7:0] dec_temp [2:0];  // temporary variable of dec
     reg [7:0] dec [2:0];  // decoded number character code
     reg trigger_d0;
     reg trigger_d1;
     reg [7:0] buff [2:0];  // buffer
     reg [13:0] cnt;
 
-    // deocder of 8421-BCD
+    // decoder of 8421-BCD
     always @(num0, num1, num2) begin
         // direct decoding
         case (num0)
@@ -99,7 +99,7 @@ module sn74hc595_trio_seg8_driver(
             default: dec_temp[2] = CHAR_0;
         endcase
         // concatenate info of decimal point
-        case (PIONT_POS)
+        case (POINT_POS)
             2'd1: begin
                 dec[0] <= dec_temp[0] & CHAR_POINT;
                 dec[1] <= dec_temp[1];
