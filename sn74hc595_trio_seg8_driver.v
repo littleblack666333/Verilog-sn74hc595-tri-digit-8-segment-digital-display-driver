@@ -54,7 +54,7 @@ module sn74hc595_trio_seg8_driver(
 
     reg [7:0] dec_temp [2:0];  // temporary variable of dec
     reg [7:0] dec [2:0];  // decoded number character code
-    reg trigger_d0;
+    reg trigger_d0;  // delayed trigger signal
     reg trigger_d1;
     reg [7:0] buff [2:0];  // buffer
     reg [13:0] cnt;
