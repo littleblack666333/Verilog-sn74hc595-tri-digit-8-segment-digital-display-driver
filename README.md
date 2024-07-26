@@ -1,4 +1,4 @@
-# Verilog Driver Code for SN74HC595 Drived Tri-digit 8-segment Display Module
+# Verilog Driver Code for SN74HC595 Driven Tri-digit 8-segment Display Module
 ## Basic Description
 This is a Verilog driver for a tri-digit 8-segment display module driven by the SN74HC595 chip, designed to display 
 specified digits using an FPGA. The display module consists of three 8-segment displays (seven segments for digits and 
@@ -27,7 +27,8 @@ This module includes five input ports and three output ports, defined as follows
   register to the display register in the 74HC595 chip, refreshing the display
 #### Configurable Parameters
 * `STEP_LENGTH`: The number of `clk` signals in each step; one `clk_serial` cycle contains two steps, which can 
-  transmit 1 bit of data.
+  transmit 1 bit of data. Check the widths of related registers after adjustment.\
+  *related register:* `cnt`
 * `POINT_POS`: The position of the decimal point, displayed after the corresponding digit; if set to 0, the decimal 
   point is not displayed.
 #### Display Module Information
@@ -50,7 +51,7 @@ This module includes five input ports and three output ports, defined as follows
 * `clk`: 位宽为1位，时钟信号，默认为50MHz
 * `rst_n`: 位宽为1位，复位信号，低有效
 * `trigger`: 位宽为1位，触发信号，上升沿有效，用于将当前输入的3个数字显示在数码管上，刷新数码管的显示。`trigger`信号的变化频率应不
-  大于`clk`信号
+大于`clk`信号
 * `num0`: 位宽为4位，拟显示的第一个数字的8421BCD码，第一个数字是显示模块上最左边的数字
 * `num1`: 位宽为4位，拟显示的第二个数字的8421BCD码
 * `num2`: 位宽为4位，拟显示的第三个数字的8421BCD码
@@ -59,7 +60,8 @@ This module includes five input ports and three output ports, defined as follows
 * `data`: 位宽为1位，串行数据输出端口
 * `load`: 位宽为1为，装数信号输出端口，上升沿有效，用于将74HC595芯片中移位寄存器的数据输出到显示寄存器中，刷新数码管的显示
 ### 可修改参数信息
-* `STEP_LENGTH`: 每一个步长包含的`clk`时钟信号的数量，一个`clk_serial`周期包含两个步长，可以传送1bit数据
+* `STEP_LENGTH`: 每一个步长包含的`clk`时钟信号的数量，一个`clk_serial`周期包含两个步长，可以传送1bit数据。更改后请检查相关寄存器的位宽\
+  *相关寄存器：* `cnt`
 * `POINT_POS`: 小数点的位置，显示在对应的数字后，若为0则不显示小数点
 ### 数码管模块信息
 * 数码管模块的每一个数码管均由1个74HC595芯片驱动
